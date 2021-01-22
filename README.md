@@ -1,4 +1,4 @@
-# Computer Network Project
+# Computer-Network-Project
 
 This repository was created to store 
 the codes of the final project of 
@@ -8,7 +8,7 @@ Universidade Federal de Alagoas
 <br>
 Envolved students in this project:
 
-- Jo„o Vitor Santos Tavares
+- Jo√£o Vitor Santos Tavares
 - Rick Martim Lino dos Santos
 <br>
 
