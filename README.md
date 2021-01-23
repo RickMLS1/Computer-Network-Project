@@ -23,6 +23,20 @@ We do not use this protocol here,
 but we use a communication model using JSON, that is, 
 something similar to an HTTP-based application architecture.
 
+## How to run
+
+To run the program download the .rar file and extract it. First run the server
+and then run up to 4 clients (number used for convenience and can be changed on
+server.py line 13 Serv_sock.listen(max number of connections)).
+
+With the server running opens 2 or more clients, tipe your name on the login
+screen and send messages from one to the other.
+
+To send the messages press the "Enviar" button, when you decide to leave just
+click "Sair" button at the botoom of the screen..
+
+P.S.: Server is configured to shut down after 2 minutes without any connection.
+
 ## Why using JSON?
 
 We are implementing a chat room, so we need to send some information to other customers, 
@@ -182,3 +196,14 @@ Thanks for reading so far, have a great day and good studies!
 Goodbye! :)
 
 [repository link](https://github.com/JT4v4res/Computer-Network-Project)
+
+## References
+
+- [Python Documentation - _Thread](https://docs.python.org/3/library/_thread.html)
+- [Python Documentation - Time](https://docs.python.org/3/library/time.html#time.localtime)
+- [Python Documentation - Tkinter](https://docs.python.org/3/library/tkinter.html?highlight=tkinter#module-tkinter)
+- [Python Documentation - Socket](https://docs.python.org/3/library/socket.html?highlight=socket#module-socket)
+- [Python Documentation - JSON](https://docs.python.org/3/library/json.html?highlight=json#module-json)
+- [Python Documentation - Sys](https://docs.python.org/3/library/sys.html?highlight=sys#module-sys)
+- [Python Documentation - Datetime](https://docs.python.org/3/library/datetime.html?highlight=datetime#module-datetime)
+- [Python Documentation - Os](https://docs.python.org/3/library/os.html?highlight=os#module-os)
