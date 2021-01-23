@@ -23,6 +23,8 @@ def User_Conn(SCK, ADDR):
     # Confirm client connection
     SCK.send("Welcome!".encode())
 
+    end_time_user = time.time() + 180   # Time limit for thread exists without new messages
+
     while True:
         try:
             # Waiting for upcoming data
@@ -31,16 +33,23 @@ def User_Conn(SCK, ADDR):
             # here we convert the JSON back to python dict
             msg = json.loads(SCK.recv(2048).decode())
 
-            print("Message:", msg["message"],", from:", ADDR, sep='')   # Shows message on server console
+            print("Message:", msg["message"],", from:", ADDR, " at ", time.asctime(), sep='')   # Shows message on server console
             Update_Msg_History(msg, ADDR)   # Update the message historic
             SendFAll(SCK, msg) # Here we delivery the message from all the other connected clients
 
             if msg["message"] == 'exit':
                 Close_conn(SCK)
 
-        except Exception:
-            expt = sys.exc_info()
-            update_log(expt)
+            end_time_user = time.time() + 180
+        except:
+            if Exception:
+                expt = sys.exc_info()
+                update_log(expt)
+
+            if time.time() > end_time_user:
+                print('Inative client detected, closing connection')    # Closing an inactive connection
+                Close_conn(SCK)
+                break
 
             continue
 
@@ -83,8 +92,6 @@ def Close_conn(User):
     try:
        if User in Conn_lst:  # Check for socket object in list of clients
             Conn_lst.remove(User)  # Remove the client disconnected from list
-            msg["message"] = 'Disconnected'
-            User.send(json.dumps(msg).encode())
             User.close()  # Close connection
     except Exception:
         expt = sys.exc_info()
@@ -118,10 +125,11 @@ Hist.close()
 
 start_new_thread(Accept_Conn_thread, ())    # Start the thread that accept new connections
 
-end_time = time.time() + 120
+end_time = time.time() + 120    # Time limit for server stay open without connections
 
 while True:
     if not Conn_lst and time.time() >= end_time:
+        print("No users connected for long time, closing server")
         Serv_sock.close()
         break
     elif Conn_lst and time.time() >= end_time:
