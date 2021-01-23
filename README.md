@@ -8,7 +8,7 @@ Universidade Federal de Alagoas
 <br>
 Envolved students in this project:
 
-- Jo�o Vitor Santos Tavares
+- João Vitor Santos Tavares
 - Rick Martim Lino dos Santos
 <br>
 
