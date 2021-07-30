@@ -216,5 +216,5 @@ def Login_Wind():
     login_window.mainloop()
 
 
-# Call of the main function
+# Call the main function
 Login_Wind()
